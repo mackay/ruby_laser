@@ -1,6 +1,8 @@
 import time
 import RPi.GPIO as GPIO
 
+GPIO.setmode(GPIO.BCM)
+
 
 STEP_SEQUENCE_FULL = [[1, 0, 0, 0],
                       [0, 1, 0, 0],
@@ -39,7 +41,6 @@ class Stepper(object):
 
     def _init(self):
         self.sequence_index = 0
-        GPIO.setmode(GPIO.BCM)
 
         for pin in self.pins:
             GPIO.setup(pin, GPIO.OUT)
@@ -55,10 +56,10 @@ class Stepper(object):
         self.set_pins(0, 0, 0, 0)
 
     def advance(self, degrees):
-        self.move(degrees, 1)
+        return self.move(degrees, 1)
 
     def reverse(self, degrees):
-        self.move(degrees, -1)
+        return self.move(degrees, -1)
 
     def move(self, degrees, direction=1):
         degrees = float(degrees)
