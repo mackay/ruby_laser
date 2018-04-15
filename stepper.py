@@ -39,6 +39,7 @@ class Stepper(object):
 
     def _init(self):
         self.sequence_index = 0
+        GPIO.setmode(GPIO.BCM)
 
         for pin in self.pins:
             GPIO.setup(pin, GPIO.OUT)
