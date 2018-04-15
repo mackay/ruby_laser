@@ -39,6 +39,7 @@ class Stepper(object):
 
     def _init(self):
         self.sequence_index = 0
+        GPIO.setmode(GPIO.BCM)
 
         for pin in self.pins:
             GPIO.setup(pin, GPIO.OUT)
@@ -64,7 +65,7 @@ class Stepper(object):
 
         while degrees > 0:
             self.sequence_index += direction
-            self.sequence_index %= len(self.sequence_len)
+            self.sequence_index %= self.sequence_len
 
             self._pins(*self.sequence[self.sequence_index])
             time.sleep(self.step_delay)
