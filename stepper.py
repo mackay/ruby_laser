@@ -26,7 +26,7 @@ STEP_SEQUENCE_TORQ = [[1, 0, 0, 1],
 
 class Stepper(object):
 
-    DEGREES_PER_SEQUENCE = 1.422222
+    DEGREES_PER_SEQUENCE = 0.703125
 
     def __init__(self, pin_sequence, step_sequence, step_delay=0.00175):
         self.pins = pin_sequence
